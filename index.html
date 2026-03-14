@@ -181,10 +181,12 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             object-fit: cover;
+            filter: grayscale(100%); /* Робить рендери чорно-білими за замовчуванням */
             display: block;
             transition: opacity 0.3s;
             background-color: #111;
             cursor: pointer; /* Додано, щоб було видно, що клікабельне */
+            
         }
 
         .gallery-grid img:hover {
@@ -298,6 +300,7 @@
             <section class="categories-grid">
                 <div class="category-card" data-target="interiors">
                     <img src="images/home-interiors.jpg" alt="Interiors">
+                    
                     <div class="overlay">
                         <h2>Interiors</h2>
                     </div>
