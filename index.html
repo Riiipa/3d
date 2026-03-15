@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmytro Ripa | 3D Artist & Interior Designer</title>
+    
+    <!-- ПІДКЛЮЧЕННЯ ПРЕМІАЛЬНОГО ТОНКОГО ШРИФТУ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300&display=swap" rel="stylesheet">
+
     <style>
         /* Базові налаштування (Мінімалізм) */
         * {
@@ -21,7 +27,9 @@
         body {
             background-color: #080808;
             color: #ffffff;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /* ВИПРАВЛЕНО: Жорсткий веб-шрифт замість системної лотереї */
+            font-family: 'Jost', sans-serif;
+            font-weight: 300; /* Базова товщина - Light */
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -49,7 +57,8 @@
             color: #666;
             text-decoration: none;
             font-size: 0.8rem;
-            letter-spacing: 1.5px;
+            font-weight: 300; /* Тонкий текст для навігації */
+            letter-spacing: 2px; /* Збільшено для кращої читабельності тонкого шрифту */
             transition: color 0.3s ease;
             text-transform: uppercase;
             cursor: pointer;
@@ -60,10 +69,11 @@
         }
 
         .logo h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             line-height: 0.9;
-            font-weight: 700;
-            letter-spacing: 3px;
+            /* ВИПРАВЛЕНО: З 700 (повний несмак) до 200 (ExtraLight) */
+            font-weight: 200; 
+            letter-spacing: 5px;
             text-align: center;
             cursor: pointer;
         }
@@ -86,15 +96,15 @@
             margin-bottom: 3rem;
             color: #999;
             font-size: 1.1rem;
-            font-weight: 300;
+            font-weight: 200; /* ExtraLight */
         }
 
         .contact-details {
             color: #fff;
             font-size: 1rem;
-            font-weight: 300;
+            font-weight: 200; /* ExtraLight */
             line-height: 2;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .contact-details a {
@@ -138,8 +148,9 @@
             text-align: center;
             margin-bottom: 5rem;
             color: #999;
-            font-size: 1.1rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            font-weight: 200; /* ExtraLight */
+            letter-spacing: 1px;
         }
 
         /* Сітка категорій (Головна сторінка) */
@@ -186,8 +197,8 @@
         .category-card .overlay h2 {
             color: #ffffff;
             font-size: 1.5rem;
-            font-weight: 300;
-            letter-spacing: 3px;
+            font-weight: 200; /* ExtraLight замість 300, виглядає дорожче */
+            letter-spacing: 4px;
             text-transform: uppercase;
             transform: translateY(15px);
             transition: transform 0.4s ease;
@@ -209,8 +220,8 @@
         /* Галерея (для сторінок проектів) */
         .page-title {
             margin-bottom: 3rem;
-            font-weight: 300;
-            letter-spacing: 3px;
+            font-weight: 200; /* ExtraLight */
+            letter-spacing: 4px;
             color: #fff;
             text-transform: uppercase;
         }
@@ -277,8 +288,8 @@
             top: 30px;
             right: 40px;
             color: #888;
-            font-size: 40px;
-            font-weight: 100;
+            font-size: 50px; /* Збільшено хрестик, бо тонкий шрифт робить його замалим */
+            font-weight: 100; /* Найтонший можливий варіант */
             cursor: pointer;
             transition: color 0.3s ease;
             line-height: 1;
@@ -294,7 +305,8 @@
             padding: 3rem;
             color: #444;
             font-size: 0.8rem;
-            letter-spacing: 1px;
+            font-weight: 300;
+            letter-spacing: 1.5px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -307,7 +319,7 @@
         }
 
         .footer-socials a {
-            color: #444; /* Монохромні, темні, як ти просив */
+            color: #444;
             transition: color 0.3s ease;
             display: flex;
             align-items: center;
@@ -333,37 +345,37 @@
                 padding: 1.5rem 1rem;
             }
             .nav-links {
-                flex-wrap: wrap; /* ВИПРАВЛЕННЯ: дозволяє посиланням переноситись, а не розширювати екран */
+                flex-wrap: wrap;
                 justify-content: center;
                 gap: 1rem;
-                width: 100%; /* Гарантує, що не вилізе за межі */
+                width: 100%;
             }
             .categories-grid {
                 grid-template-columns: 1fr;
-                max-width: 100%; /* ВИПРАВЛЕННЯ: прибрано жорсткі 450px, які могли спричинити overflow на дрібних екранах */
+                max-width: 100%;
             }
             .category-card .overlay {
-                opacity: 1; /* Жорстко показуємо оверлей на мобільних */
-                background: rgba(0, 0, 0, 0.4); /* Зменшив затемнення, щоб було видно картинку */
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.4);
             }
             .category-card .overlay h2 {
-                transform: translateY(0); /* Ставимо текст на місце */
+                transform: translateY(0);
             }
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.5rem;
             }
             .gallery-grid img {
-                filter: grayscale(0%); /* ВИПРАВЛЕННЯ: скидання чорно-білого фільтру для мобільних */
+                filter: grayscale(0%);
             }
             main {
                 padding: 1rem;
-                width: 100%; /* Гарантує, що контент не розірве viewport */
+                width: 100%;
             }
             .lightbox-close {
                 top: 15px;
                 right: 20px;
-                font-size: 30px;
+                font-size: 40px;
             }
         }
     </style>
