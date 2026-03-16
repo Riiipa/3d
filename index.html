@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmytro Ripa | 3D Artist & Interior Designer</title>
     
-    <!-- ПІДКЛЮЧЕННЯ ПРЕМІАЛЬНОГО ТОНКОГО ШРИФТУ -->
+    <!-- Правильні шрифти: читабельний мінімалізм (300 і 400) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
     
-    <!-- ВИПРАВЛЕНО: Аналітика має бути тут, а не всередині CSS -->
+    <!-- Правильне підключення аналітики (ПОЗА тегом style) -->
     <script src="https://cloud.umami.is/script.js" data-website-id="2f22f287-88f8-4059-9999-76cdc04b44d3"></script>
 
     <style>
@@ -31,10 +31,7 @@
             background-color: #080808;
             color: #ffffff;
             font-family: 'Jost', sans-serif;
-            font-weight: 300; /* Базова товщина - Light */
-            /* ВИПРАВЛЕНО: Повернуто згладжування, інакше тонкий шрифт буде виглядати жахливо */
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400; /* Базова товщина - Regular */
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -62,8 +59,8 @@
             color: #666;
             text-decoration: none;
             font-size: 0.8rem;
-            font-weight: 300; /* Тонкий текст для навігації */
-            letter-spacing: 2px; /* Збільшено для кращої читабельності тонкого шрифту */
+            font-weight: 400; 
+            letter-spacing: 2px;
             transition: color 0.3s ease;
             text-transform: uppercase;
             cursor: pointer;
@@ -76,7 +73,7 @@
         .logo h1 {
             font-size: 2.5rem;
             line-height: 0.9;
-            font-weight: 200; 
+            font-weight: 300; 
             letter-spacing: 5px;
             text-align: center;
             cursor: pointer;
@@ -100,13 +97,13 @@
             margin-bottom: 3rem;
             color: #999;
             font-size: 1.1rem;
-            font-weight: 200; /* ExtraLight */
+            font-weight: 300; 
         }
 
         .contact-details {
             color: #fff;
             font-size: 1rem;
-            font-weight: 200; /* ExtraLight */
+            font-weight: 300; 
             line-height: 2;
             letter-spacing: 1.5px;
         }
@@ -153,7 +150,7 @@
             margin-bottom: 5rem;
             color: #999;
             font-size: 1.2rem;
-            font-weight: 200; /* ExtraLight */
+            font-weight: 300;
             letter-spacing: 1px;
         }
 
@@ -181,6 +178,10 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(100%);
+            /* Примусове апаратне згладжування GPU (Anti-aliasing) */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
         }
 
@@ -201,7 +202,7 @@
         .category-card .overlay h2 {
             color: #ffffff;
             font-size: 1.5rem;
-            font-weight: 200; /* ExtraLight замість 300, виглядає дорожче */
+            font-weight: 300;
             letter-spacing: 4px;
             text-transform: uppercase;
             transform: translateY(15px);
@@ -209,7 +210,7 @@
         }
 
         .category-card:hover img {
-            transform: scale(1.05);
+            transform: scale(1.05) translateZ(0);
             filter: grayscale(0%);
         }
 
@@ -224,7 +225,7 @@
         /* Галерея (для сторінок проектів) */
         .page-title {
             margin-bottom: 3rem;
-            font-weight: 200; /* ВИПРАВЛЕНО: Було : 200; */
+            font-weight: 300; /* Виправлено синтаксичну помилку */
             letter-spacing: 4px;
             color: #fff;
             text-transform: uppercase;
@@ -244,13 +245,18 @@
             object-fit: cover;
             filter: grayscale(100%);
             display: block;
-            transition: opacity 0.3s;
             background-color: #111;
             cursor: pointer;
+            /* Примусове апаратне згладжування GPU */
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            transition: filter 0.3s ease, transform 0.3s ease;
         }
 
         .gallery-grid img:hover {
             filter: grayscale(0%);
+            transform: translateZ(0) scale(1.02);
         }
 
         /* --- ЛАЙТБОКС (МОДАЛЬНЕ ВІКНО) --- */
@@ -293,7 +299,7 @@
             right: 40px;
             color: #888;
             font-size: 50px;
-            font-weight: 100;
+            font-weight: 300;
             cursor: pointer;
             transition: color 0.3s ease;
             line-height: 1;
@@ -309,7 +315,7 @@
             padding: 3rem;
             color: #444;
             font-size: 0.8rem;
-            font-weight: 200;
+            font-weight: 400;
             letter-spacing: 1.5px;
             display: flex;
             flex-direction: column;
@@ -387,10 +393,7 @@
 <body>
     <header>
         <div class="logo">
-            <!-- Заміни src="images/logo.png" на реальний шлях до твого прозорого PNG -->
             <img src="images/logo.png" alt="RIPA" class="logo-img" data-target="home">
-            <!-- Якщо картинки ще немає, розкоментуй H1 нижче, а img закоментуй -->
-            <!-- <h1 data-target="home">RI<br>PA</h1> -->
         </div>
         <nav class="nav-links">
             <a data-target="home" class="active">HOME</a>
@@ -412,7 +415,6 @@
             <section class="categories-grid">
                 <div class="category-card" data-target="interiors">
                     <img src="images/home-interiors.jpg" alt="Interiors">
-                    
                     <div class="overlay">
                         <h2>Interiors</h2>
                     </div>
@@ -436,24 +438,25 @@
         <div id="interiors" class="page">
             <h2 class="page-title">Interiors</h2>
             <section class="gallery-grid">
-                <img src="images/int-work1.jpg" alt="Interior Work 1">
-                <img src="images/int-work2.jpg" alt="Interior Work 2">
-                <img src="images/int-work3.jpg" alt="Interior Work 3">
-                <img src="images/int-work4.jpg" alt="Interior Work 4">
-                <img src="images/int-work5.jpg" alt="Interior Work 5">
-                <img src="images/int-work6.jpg" alt="Interior Work 6">
-                <img src="images/int-work7.jpg" alt="Interior Work 7">
-                <img src="images/int-work8.jpg" alt="Interior Work 8">
-                <img src="images/int-work9.jpg" alt="Interior Work 9">
-                <img src="images/int-work11.jpg" alt="Interior Work 11">
-                <img src="images/int-work12.jpg" alt="Interior Work 12">
-                <img src="images/int-work13.jpg" alt="Interior Work 13">
-                <img src="images/int-work15.jpg" alt="Interior Work 15">
-                <img src="images/int-work16.jpg" alt="Interior Work 16">
-                <img src="images/int-work17.jpg" alt="Interior Work 17">
-                <img src="images/int-work19.jpg" alt="Interior Work 19">
-                <img src="images/int-work21.jpg" alt="Interior Work 21">
-                <img src="images/int-work22.jpg" alt="Interior Work 22">
+                <!-- Логіка мініатюр (data-full зберігає шлях до оригіналу) -->
+                <img src="images/thumb/int-work1.jpg" data-full="images/int-work1.jpg" alt="Interior Work 1">
+                <img src="images/thumb/int-work2.jpg" data-full="images/int-work2.jpg" alt="Interior Work 2">
+                <img src="images/thumb/int-work3.jpg" data-full="images/int-work3.jpg" alt="Interior Work 3">
+                <img src="images/thumb/int-work4.jpg" data-full="images/int-work4.jpg" alt="Interior Work 4">
+                <img src="images/thumb/int-work5.jpg" data-full="images/int-work5.jpg" alt="Interior Work 5">
+                <img src="images/thumb/int-work6.jpg" data-full="images/int-work6.jpg" alt="Interior Work 6">
+                <img src="images/thumb/int-work7.jpg" data-full="images/int-work7.jpg" alt="Interior Work 7">
+                <img src="images/thumb/int-work8.jpg" data-full="images/int-work8.jpg" alt="Interior Work 8">
+                <img src="images/thumb/int-work9.jpg" data-full="images/int-work9.jpg" alt="Interior Work 9">
+                <img src="images/thumb/int-work11.jpg" data-full="images/int-work11.jpg" alt="Interior Work 11">
+                <img src="images/thumb/int-work12.jpg" data-full="images/int-work12.jpg" alt="Interior Work 12">
+                <img src="images/thumb/int-work13.jpg" data-full="images/int-work13.jpg" alt="Interior Work 13">
+                <img src="images/thumb/int-work15.jpg" data-full="images/int-work15.jpg" alt="Interior Work 15">
+                <img src="images/thumb/int-work16.jpg" data-full="images/int-work16.jpg" alt="Interior Work 16">
+                <img src="images/thumb/int-work17.jpg" data-full="images/int-work17.jpg" alt="Interior Work 17">
+                <img src="images/thumb/int-work19.jpg" data-full="images/int-work19.jpg" alt="Interior Work 19">
+                <img src="images/thumb/int-work21.jpg" data-full="images/int-work21.jpg" alt="Interior Work 21">
+                <img src="images/thumb/int-work22.jpg" data-full="images/int-work22.jpg" alt="Interior Work 22">
             </section>
         </div>
 
@@ -461,24 +464,24 @@
         <div id="architecture" class="page">
             <h2 class="page-title">Architecture</h2>
             <section class="gallery-grid">
-                <img src="images/ext-work1.jpg" alt="Exterior Work 1">
-                <img src="images/ext-work2.jpg" alt="Exterior Work 2">
-                <img src="images/ext-work3.jpg" alt="Exterior Work 3">
-                <img src="images/ext-work4.jpg" alt="Exterior Work 4">
-                <img src="images/ext-work5.jpg" alt="Exterior Work 5">
-                <img src="images/ext-work6.jpg" alt="Exterior Work 6">
-                <img src="images/ext-work7.jpg" alt="Exterior Work 7">
-                <img src="images/ext-work8.jpg" alt="Exterior Work 8">
-                <img src="images/ext-work9.jpg" alt="Exterior Work 9">
-                <img src="images/ext-work10.jpg" alt="Exterior Work 10">
-                <img src="images/ext-work11.jpg" alt="Exterior Work 11">
-                <img src="images/ext-work12.jpg" alt="Exterior Work 12">
-                <img src="images/ext-work13.jpg" alt="Exterior Work 13">
-                <img src="images/ext-work14.jpg" alt="Exterior Work 14">
-                <img src="images/ext-work15.jpg" alt="Exterior Work 15">
-                <img src="images/ext-work16.jpg" alt="Exterior Work 16">
-                <img src="images/ext-work17.jpg" alt="Exterior Work 17">
-                <img src="images/ext-work18.jpg" alt="Exterior Work 18">
+                <img src="images/thumb/ext-work1.jpg" data-full="images/ext-work1.jpg" alt="Exterior Work 1">
+                <img src="images/thumb/ext-work2.jpg" data-full="images/ext-work2.jpg" alt="Exterior Work 2">
+                <img src="images/thumb/ext-work3.jpg" data-full="images/ext-work3.jpg" alt="Exterior Work 3">
+                <img src="images/thumb/ext-work4.jpg" data-full="images/ext-work4.jpg" alt="Exterior Work 4">
+                <img src="images/thumb/ext-work5.jpg" data-full="images/ext-work5.jpg" alt="Exterior Work 5">
+                <img src="images/thumb/ext-work6.jpg" data-full="images/ext-work6.jpg" alt="Exterior Work 6">
+                <img src="images/thumb/ext-work7.jpg" data-full="images/ext-work7.jpg" alt="Exterior Work 7">
+                <img src="images/thumb/ext-work8.jpg" data-full="images/ext-work8.jpg" alt="Exterior Work 8">
+                <img src="images/thumb/ext-work9.jpg" data-full="images/ext-work9.jpg" alt="Exterior Work 9">
+                <img src="images/thumb/ext-work10.jpg" data-full="images/ext-work10.jpg" alt="Exterior Work 10">
+                <img src="images/thumb/ext-work11.jpg" data-full="images/ext-work11.jpg" alt="Exterior Work 11">
+                <img src="images/thumb/ext-work12.jpg" data-full="images/ext-work12.jpg" alt="Exterior Work 12">
+                <img src="images/thumb/ext-work13.jpg" data-full="images/ext-work13.jpg" alt="Exterior Work 13">
+                <img src="images/thumb/ext-work14.jpg" data-full="images/ext-work14.jpg" alt="Exterior Work 14">
+                <img src="images/thumb/ext-work15.jpg" data-full="images/ext-work15.jpg" alt="Exterior Work 15">
+                <img src="images/thumb/ext-work16.jpg" data-full="images/ext-work16.jpg" alt="Exterior Work 16">
+                <img src="images/thumb/ext-work17.jpg" data-full="images/ext-work17.jpg" alt="Exterior Work 17">
+                <img src="images/thumb/ext-work18.jpg" data-full="images/ext-work18.jpg" alt="Exterior Work 18">
             </section>
         </div>
 
@@ -486,12 +489,12 @@
         <div id="details" class="page">
             <h2 class="page-title">Details</h2>
             <section class="gallery-grid">
-                <img src="images/detail-work1.jpg" alt="Detail Work 1">
-                <img src="images/detail-work2.jpg" alt="Detail Work 2">
-                <img src="images/detail-work3.jpg" alt="Detail Work 3">
-                <img src="images/detail-work4.jpg" alt="Detail Work 4">
-                <img src="images/detail-work5.jpg" alt="Detail Work 5">
-                <img src="images/detail-work6.jpg" alt="Detail Work 6">
+                <img src="images/thumb/detail-work1.jpg" data-full="images/detail-work1.jpg" alt="Detail Work 1">
+                <img src="images/thumb/detail-work2.jpg" data-full="images/detail-work2.jpg" alt="Detail Work 2">
+                <img src="images/thumb/detail-work3.jpg" data-full="images/detail-work3.jpg" alt="Detail Work 3">
+                <img src="images/thumb/detail-work4.jpg" data-full="images/detail-work4.jpg" alt="Detail Work 4">
+                <img src="images/thumb/detail-work5.jpg" data-full="images/detail-work5.jpg" alt="Detail Work 5">
+                <img src="images/thumb/detail-work6.jpg" data-full="images/detail-work6.jpg" alt="Detail Work 6">
             </section>
         </div>
 
@@ -502,7 +505,7 @@
                 <p class="contact-text">Open for opportunities and collaborations.</p>
                 <div class="contact-details">
                     <p>Paris, France</p>
-                    <p><a href="mailto:ripa.dm@gmail.com">ripa.dm@gmail.com</a></p>
+                    <p><a href="mailto:ripa.dm@gmail.com" data-umami-event="Email Click">ripa.dm@gmail.com</a></p>
                 </div>
             </section>
         </div>
@@ -557,12 +560,14 @@
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = document.querySelector('.lightbox-close');
-            const galleryImages = document.querySelectorAll('.gallery-grid img');
+            const galleryImages = document.querySelectorAll('.gallery-grid img[data-full]');
 
             galleryImages.forEach(img => {
                 img.addEventListener('click', () => {
                     lightbox.classList.add('show');
-                    lightboxImg.src = img.src.replace('&q=80', '&q=100');
+                    // Беремо якісний оригінал для лайтбоксу
+                    const fullResUrl = img.getAttribute('data-full');
+                    lightboxImg.src = fullResUrl;
                 });
             });
 
