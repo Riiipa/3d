@@ -335,7 +335,33 @@
         .lightbox-close:hover {
             color: #fff;
         }
+        
+        /* ДОДАНО: Навігація в лайтбоксі (стрілки) */
+        .lightbox-prev, .lightbox-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 40px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 20px;
+            user-select: none;
+            z-index: 1001;
+        }
 
+        .lightbox-prev:hover, .lightbox-next:hover {
+            color: #fff;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
         /* Футер */
         footer {
             text-align: center;
