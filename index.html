@@ -43,8 +43,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 3rem 1rem 1rem 1rem;
-            gap: 2rem;
+            /* ВИПРАВЛЕНО: Зменшено відступи, оскільки логотипу більше немає */
+            padding: 3rem 1rem 2rem 1rem;
         }
 
         .nav-links {
@@ -68,22 +68,6 @@
 
         .nav-links a:hover, .nav-links a.active {
             color: #ffffff;
-        }
-
-        .logo h1 {
-            font-size: 2.5rem;
-            line-height: 0.9;
-            font-weight: 300; 
-            letter-spacing: 5px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            max-height: 50px;
-            width: auto;
-            cursor: pointer;
-            display: block;
         }
 
         /* Сторінка контактів */
@@ -156,7 +140,7 @@
         /* ДОДАНО: Стилі для твого імені як бренду */
         .intro-name {
             color: #ffffff;
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 300;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -166,7 +150,7 @@
 
         .intro-role {
             color: #aaaaaa;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             font-weight: 300;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -174,7 +158,7 @@
 
         .intro-location {
             color: #666666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 400;
             letter-spacing: 6px;
             text-transform: uppercase;
@@ -266,35 +250,24 @@
             max-width: 1400px;
         }
 
-        /* НОВИЙ CSS ДЛЯ ГАЛЕРЕЇ З ОБГОРТКАМИ */
-        .gallery-item {
-            position: relative;
+        .gallery-grid img {
             width: 100%;
             aspect-ratio: 1 / 1;
-            overflow: hidden; 
-            background-color: #111;
-            cursor: pointer;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
             filter: grayscale(100%);
             display: block;
-            
-            /* Апаратне прискорення */
+            background-color: #111;
+            cursor: pointer;
+            /* Примусове апаратне згладжування GPU */
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
             transform: translateZ(0);
-            
-            /* Транзиції як на головній сторінці для єдиного стилю */
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+            transition: filter 0.3s ease, transform 0.3s ease;
         }
 
-        .gallery-item:hover img {
+        .gallery-grid img:hover {
             filter: grayscale(0%);
-            transform: scale(1.03) translateZ(0);
+            transform: translateZ(0) scale(1.02);
         }
 
         /* --- ЛАЙТБОКС (МОДАЛЬНЕ ВІКНО) --- */
@@ -337,7 +310,7 @@
             right: 40px;
             color: #888;
             font-size: 50px;
-            font-weight: 200;
+            font-weight: 300;
             cursor: pointer;
             transition: color 0.3s ease;
             line-height: 1;
@@ -346,7 +319,7 @@
         .lightbox-close:hover {
             color: #fff;
         }
-        
+
         /* ДОДАНО: Навігація в лайтбоксі (стрілки) */
         .lightbox-prev, .lightbox-next {
             position: absolute;
@@ -354,7 +327,7 @@
             transform: translateY(-50%);
             color: #888;
             font-size: 40px;
-            font-weight: 200;
+            font-weight: 300;
             cursor: pointer;
             transition: color 0.3s ease;
             padding: 20px;
@@ -373,6 +346,7 @@
         .lightbox-next {
             right: 20px;
         }
+
         /* Футер */
         footer {
             text-align: center;
@@ -451,14 +425,19 @@
                 right: 20px;
                 font-size: 40px;
             }
+            /* ДОДАНО: Адаптація стрілок для мобільних */
+            .lightbox-prev, .lightbox-next {
+                font-size: 30px;
+                padding: 10px;
+            }
+            .lightbox-prev { left: 5px; }
+            .lightbox-next { right: 5px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="RIPA" class="logo-img" data-target="home">
-        </div>
+        <!-- ВИДАЛЕНО: Блок логотипу вирізано згідно з твоїм провальним UX-рішенням -->
         <nav class="nav-links">
             <a data-target="home" class="active">HOME</a>
             <a data-target="interiors">INTERIORS</a>
@@ -504,24 +483,25 @@
         <div id="interiors" class="page">
             <h2 class="page-title">Interiors</h2>
             <section class="gallery-grid">
-                <div class="gallery-item"><img src="images/thumb/int-work4.jpg" data-full="images/int-work4.jpg" alt="Interior Work 1"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work5.jpg" data-full="images/int-work5.jpg" alt="Interior Work 2"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work6.jpg" data-full="images/int-work6.jpg" alt="Interior Work 3"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work7.jpg" data-full="images/int-work7.jpg" alt="Interior Work 4"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work9.jpg" data-full="images/int-work9.jpg" alt="Interior Work 5"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work8.jpg" data-full="images/int-work8.jpg" alt="Interior Work 6"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work11.jpg" data-full="images/int-work11.jpg" alt="Interior Work 7"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work12.jpg" data-full="images/int-work12.jpg" alt="Interior Work 8"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work13.jpg" data-full="images/int-work13.jpg" alt="Interior Work 9"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work15.jpg" data-full="images/int-work15.jpg" alt="Interior Work 10"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work16.jpg" data-full="images/int-work16.jpg" alt="Interior Work 11"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work17.jpg" data-full="images/int-work17.jpg" alt="Interior Work 12"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work19.jpg" data-full="images/int-work19.jpg" alt="Interior Work 13"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work21.jpg" data-full="images/int-work21.jpg" alt="Interior Work 14"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work22.jpg" data-full="images/int-work22.jpg" alt="Interior Work 15"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work1.jpg" data-full="images/int-work1.jpg" alt="Interior Work 16"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work2.jpg" data-full="images/int-work2.jpg" alt="Interior Work 17"></div>
-                <div class="gallery-item"><img src="images/thumb/int-work3.jpg" data-full="images/int-work3.jpg" alt="Interior Work 18"></div>
+                <!-- Логіка мініатюр (data-full зберігає шлях до оригіналу) -->
+                <img src="images/thumb/int-work1.jpg" data-full="images/int-work1.jpg" alt="Interior Work 1">
+                <img src="images/thumb/int-work2.jpg" data-full="images/int-work2.jpg" alt="Interior Work 2">
+                <img src="images/thumb/int-work3.jpg" data-full="images/int-work3.jpg" alt="Interior Work 3">
+                <img src="images/thumb/int-work4.jpg" data-full="images/int-work4.jpg" alt="Interior Work 4">
+                <img src="images/thumb/int-work5.jpg" data-full="images/int-work5.jpg" alt="Interior Work 5">
+                <img src="images/thumb/int-work6.jpg" data-full="images/int-work6.jpg" alt="Interior Work 6">
+                <img src="images/thumb/int-work7.jpg" data-full="images/int-work7.jpg" alt="Interior Work 7">
+                <img src="images/thumb/int-work8.jpg" data-full="images/int-work8.jpg" alt="Interior Work 8">
+                <img src="images/thumb/int-work9.jpg" data-full="images/int-work9.jpg" alt="Interior Work 9">
+                <img src="images/thumb/int-work11.jpg" data-full="images/int-work11.jpg" alt="Interior Work 11">
+                <img src="images/thumb/int-work12.jpg" data-full="images/int-work12.jpg" alt="Interior Work 12">
+                <img src="images/thumb/int-work13.jpg" data-full="images/int-work13.jpg" alt="Interior Work 13">
+                <img src="images/thumb/int-work15.jpg" data-full="images/int-work15.jpg" alt="Interior Work 15">
+                <img src="images/thumb/int-work16.jpg" data-full="images/int-work16.jpg" alt="Interior Work 16">
+                <img src="images/thumb/int-work17.jpg" data-full="images/int-work17.jpg" alt="Interior Work 17">
+                <img src="images/thumb/int-work19.jpg" data-full="images/int-work19.jpg" alt="Interior Work 19">
+                <img src="images/thumb/int-work21.jpg" data-full="images/int-work21.jpg" alt="Interior Work 21">
+                <img src="images/thumb/int-work22.jpg" data-full="images/int-work22.jpg" alt="Interior Work 22">
             </section>
         </div>
 
@@ -529,24 +509,24 @@
         <div id="architecture" class="page">
             <h2 class="page-title">Architecture</h2>
             <section class="gallery-grid">
-                <div class="gallery-item"><img src="images/thumb/ext-work1.jpg" data-full="images/ext-work1.jpg" alt="Exterior Work 1"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work2.jpg" data-full="images/ext-work2.jpg" alt="Exterior Work 2"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work3.jpg" data-full="images/ext-work3.jpg" alt="Exterior Work 3"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work4.jpg" data-full="images/ext-work4.jpg" alt="Exterior Work 4"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work5.jpg" data-full="images/ext-work5.jpg" alt="Exterior Work 5"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work6.jpg" data-full="images/ext-work6.jpg" alt="Exterior Work 6"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work7.jpg" data-full="images/ext-work7.jpg" alt="Exterior Work 7"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work8.jpg" data-full="images/ext-work8.jpg" alt="Exterior Work 8"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work9.jpg" data-full="images/ext-work9.jpg" alt="Exterior Work 9"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work10.jpg" data-full="images/ext-work10.jpg" alt="Exterior Work 10"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work11.jpg" data-full="images/ext-work11.jpg" alt="Exterior Work 11"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work12.jpg" data-full="images/ext-work12.jpg" alt="Exterior Work 12"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work13.jpg" data-full="images/ext-work13.jpg" alt="Exterior Work 13"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work14.jpg" data-full="images/ext-work14.jpg" alt="Exterior Work 14"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work15.jpg" data-full="images/ext-work15.jpg" alt="Exterior Work 15"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work16.jpg" data-full="images/ext-work16.jpg" alt="Exterior Work 16"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work17.jpg" data-full="images/ext-work17.jpg" alt="Exterior Work 17"></div>
-                <div class="gallery-item"><img src="images/thumb/ext-work18.jpg" data-full="images/ext-work18.jpg" alt="Exterior Work 18"></div>
+                <img src="images/thumb/ext-work1.jpg" data-full="images/ext-work1.jpg" alt="Exterior Work 1">
+                <img src="images/thumb/ext-work2.jpg" data-full="images/ext-work2.jpg" alt="Exterior Work 2">
+                <img src="images/thumb/ext-work3.jpg" data-full="images/ext-work3.jpg" alt="Exterior Work 3">
+                <img src="images/thumb/ext-work4.jpg" data-full="images/ext-work4.jpg" alt="Exterior Work 4">
+                <img src="images/thumb/ext-work5.jpg" data-full="images/ext-work5.jpg" alt="Exterior Work 5">
+                <img src="images/thumb/ext-work6.jpg" data-full="images/ext-work6.jpg" alt="Exterior Work 6">
+                <img src="images/thumb/ext-work7.jpg" data-full="images/ext-work7.jpg" alt="Exterior Work 7">
+                <img src="images/thumb/ext-work8.jpg" data-full="images/ext-work8.jpg" alt="Exterior Work 8">
+                <img src="images/thumb/ext-work9.jpg" data-full="images/ext-work9.jpg" alt="Exterior Work 9">
+                <img src="images/thumb/ext-work10.jpg" data-full="images/ext-work10.jpg" alt="Exterior Work 10">
+                <img src="images/thumb/ext-work11.jpg" data-full="images/ext-work11.jpg" alt="Exterior Work 11">
+                <img src="images/thumb/ext-work12.jpg" data-full="images/ext-work12.jpg" alt="Exterior Work 12">
+                <img src="images/thumb/ext-work13.jpg" data-full="images/ext-work13.jpg" alt="Exterior Work 13">
+                <img src="images/thumb/ext-work14.jpg" data-full="images/ext-work14.jpg" alt="Exterior Work 14">
+                <img src="images/thumb/ext-work15.jpg" data-full="images/ext-work15.jpg" alt="Exterior Work 15">
+                <img src="images/thumb/ext-work16.jpg" data-full="images/ext-work16.jpg" alt="Exterior Work 16">
+                <img src="images/thumb/ext-work17.jpg" data-full="images/ext-work17.jpg" alt="Exterior Work 17">
+                <img src="images/thumb/ext-work18.jpg" data-full="images/ext-work18.jpg" alt="Exterior Work 18">
             </section>
         </div>
 
@@ -554,12 +534,12 @@
         <div id="details" class="page">
             <h2 class="page-title">Details</h2>
             <section class="gallery-grid">
-                <div class="gallery-item"><img src="images/thumb/detail-work1.jpg" data-full="images/detail-work1.jpg" alt="Detail Work 1"></div>
-                <div class="gallery-item"><img src="images/thumb/detail-work2.jpg" data-full="images/detail-work2.jpg" alt="Detail Work 2"></div>
-                <div class="gallery-item"><img src="images/thumb/detail-work3.jpg" data-full="images/detail-work3.jpg" alt="Detail Work 3"></div>
-                <div class="gallery-item"><img src="images/thumb/detail-work4.jpg" data-full="images/detail-work4.jpg" alt="Detail Work 4"></div>
-                <div class="gallery-item"><img src="images/thumb/detail-work5.jpg" data-full="images/detail-work5.jpg" alt="Detail Work 5"></div>
-                <div class="gallery-item"><img src="images/thumb/detail-work6.jpg" data-full="images/detail-work6.jpg" alt="Detail Work 6"></div>
+                <img src="images/thumb/detail-work1.jpg" data-full="images/detail-work1.jpg" alt="Detail Work 1">
+                <img src="images/thumb/detail-work2.jpg" data-full="images/detail-work2.jpg" alt="Detail Work 2">
+                <img src="images/thumb/detail-work3.jpg" data-full="images/detail-work3.jpg" alt="Detail Work 3">
+                <img src="images/thumb/detail-work4.jpg" data-full="images/detail-work4.jpg" alt="Detail Work 4">
+                <img src="images/thumb/detail-work5.jpg" data-full="images/detail-work5.jpg" alt="Detail Work 5">
+                <img src="images/thumb/detail-work6.jpg" data-full="images/detail-work6.jpg" alt="Detail Work 6">
             </section>
         </div>
 
@@ -581,7 +561,7 @@
             <a href="https://www.instagram.com/ripa.dima" target="_blank" aria-label="Instagram" data-umami-event="Instagram Click">
                 <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/in/dmytro-ripa/" target="_blank" aria-label="LinkedIn" data-umami-event="LinkedIn Click">
+            <a href="https://www.linkedin.com/in/ripa-dmytro-2401971b3/" target="_blank" aria-label="LinkedIn" data-umami-event="LinkedIn Click">
                 <svg viewBox="0 0 24 24"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/></svg>
             </a>
         </div>
@@ -603,28 +583,57 @@
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('.nav-links a[data-target]');
 
+            // ДОДАНО: Професійна логіка маршрутизації (URL Routing)
+            const showPage = (targetId) => {
+                const targetPage = document.getElementById(targetId);
+                if (!targetPage) return;
+
+                // Ховаємо всі сторінки і знімаємо активні класи з меню
+                pages.forEach(page => page.classList.remove('active'));
+                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                // Показуємо потрібну сторінку
+                targetPage.classList.add('active');
+                
+                // Активуємо всі посилання, які ведуть на цю сторінку (в меню і на головній)
+                const activeLinks = document.querySelectorAll(`[data-target="${targetId}"]`);
+                activeLinks.forEach(link => link.classList.add('active'));
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            const handleRouting = () => {
+                // Читаємо хеш з URL (без символу #)
+                const hash = window.location.hash.substring(1);
+                
+                if (hash && document.getElementById(hash)) {
+                    showPage(hash);
+                } else {
+                    // Якщо хешу немає або він хибний - кидаємо на головну
+                    showPage('home');
+                    if(hash) history.replaceState(null, null, window.location.pathname);
+                }
+            };
+
             links.forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Блокуємо дефолтний клік
                     const targetId = link.getAttribute('data-target');
-                    if (!targetId) return;
-
-                    pages.forEach(page => page.classList.remove('active'));
-                    
-                    const targetPage = document.getElementById(targetId);
-                    if(targetPage) {
-                        targetPage.classList.add('active');
+                    if (targetId) {
+                        // Змінюємо URL без перезавантаження і без стрибків
+                        history.pushState(null, null, `#${targetId}`);
+                        handleRouting();
                     }
-
-                    navLinks.forEach(nav => nav.classList.remove('active'));
-                    const activeNavLink = document.querySelector(`.nav-links a[data-target="${targetId}"]`);
-                    if(activeNavLink) {
-                        activeNavLink.classList.add('active');
-                    }
-
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 });
             });
 
+            // Обробка кнопок "Назад/Вперед" у браузері
+            window.addEventListener('popstate', handleRouting);
+
+            // Перевіряємо URL при першому завантаженні сайту
+            handleRouting();
+
+            // Логіка лайтбоксу залишається без змін
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = document.querySelector('.lightbox-close');
