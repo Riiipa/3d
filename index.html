@@ -153,7 +153,7 @@
             gap: 0.5rem;
         }
 
-        /* ДОДАНО: Стилі для твого імені як бренду */
+        /* Стилі для твого імені як бренду */
         .intro-name {
             color: #ffffff;
             font-size: 1.8rem;
@@ -250,7 +250,7 @@
         /* Галерея (для сторінок проектів) */
         .page-title {
             margin-bottom: 3rem;
-            font-weight: 300; /* Виправлено синтаксичну помилку */
+            font-weight: 300;
             letter-spacing: 4px;
             color: #fff;
             text-transform: uppercase;
@@ -264,7 +264,6 @@
             max-width: 1400px;
         }
 
-        /* НОВИЙ CSS ДЛЯ ГАЛЕРЕЇ З ОБГОРТКАМИ */
         .gallery-item {
             position: relative;
             width: 100%;
@@ -282,14 +281,50 @@
             display: block;
             backface-visibility: hidden;
             transform: translateZ(0);
-            
-            /* Транзиції як на головній сторінці для єдиного стилю */
             transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
         }
 
         .gallery-item:hover img {
             filter: grayscale(0%);
             transform: scale(1.03) translateZ(0);
+        }
+
+        /* ДОДАНО: Стилі для Soft CTA в кінці галереї */
+        .gallery-cta {
+            text-align: center;
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid #222;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .gallery-cta p {
+            color: #888;
+            font-size: 1.1rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .gallery-cta a {
+            display: inline-block;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 12px 24px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-cta a:hover {
+            background-color: #fff;
+            color: #080808;
+            border-color: #fff;
         }
 
         /* --- ЛАЙТБОКС (МОДАЛЬНЕ ВІКНО) --- */
@@ -342,7 +377,7 @@
             color: #fff;
         }
 
-        /* ДОДАНО: Навігація в лайтбоксі (стрілки) */
+        /* Навігація в лайтбоксі (стрілки) */
         .lightbox-prev, .lightbox-next {
             position: absolute;
             top: 50%;
@@ -361,13 +396,8 @@
             color: #fff;
         }
 
-        .lightbox-prev {
-            left: 20px;
-        }
-
-        .lightbox-next {
-            right: 20px;
-        }
+        .lightbox-prev { left: 20px; }
+        .lightbox-next { right: 20px; }
 
         /* Футер */
         footer {
@@ -447,19 +477,18 @@
                 right: 20px;
                 font-size: 40px;
             }
-            /* ДОДАНО: Адаптація стрілок для мобільних */
             .lightbox-prev, .lightbox-next {
                 font-size: 30px;
                 padding: 10px;
             }
             .lightbox-prev { left: 5px; }
             .lightbox-next { right: 5px; }
+            .gallery-cta { margin-top: 3rem; }
         }
     </style>
 </head>
 <body>
     <header>
-        <!-- ВИДАЛЕНО: Блок логотипу вирізано згідно з твоїм провальним UX-рішенням -->
         <nav class="nav-links">
             <a data-target="home" class="active">HOME</a>
             <a data-target="interiors">INTERIORS</a>
@@ -473,7 +502,6 @@
         <!-- СТОРІНКА: ГОЛОВНА -->
         <div id="home" class="page active">
             <section class="intro">
-                <!-- ВИПРАВЛЕНО: Жорстка ієрархія бренду без дитячих привітань -->
                 <h1 class="intro-name">Dmytro Ripa</h1>
                 <p class="intro-role">Interior Designer & 3D Artist</p>
                 <p class="intro-location">Paris</p>
@@ -524,6 +552,12 @@
                 <div class="gallery-item"><img src="images/thumb/int-work2.jpg" data-full="images/int-work2.jpg" alt="Interior Work 17"></div>
                 <div class="gallery-item"><img src="images/thumb/int-work3.jpg" data-full="images/int-work3.jpg" alt="Interior Work 18"></div>
             </section>
+            
+            <!-- ДОДАНО: Soft CTA для Інтер'єрів -->
+            <div class="gallery-cta">
+                <p>Ready to collaborate?</p>
+                <a data-target="contact" data-umami-event="CTA Click: Bottom of Interiors">Get in touch</a>
+            </div>
         </div>
 
         <!-- СТОРІНКА: АРХІТЕКТУРА -->
@@ -549,6 +583,12 @@
                 <div class="gallery-item"><img src="images/thumb/ext-work17.jpg" data-full="images/ext-work17.jpg" alt="Exterior Work 17"></div>
                 <div class="gallery-item"><img src="images/thumb/ext-work18.jpg" data-full="images/ext-work18.jpg" alt="Exterior Work 18"></div>
             </section>
+
+            <!-- ДОДАНО: Soft CTA для Архітектури -->
+            <div class="gallery-cta">
+                <p>Have an architecture project in mind?</p>
+                <a data-target="contact" data-umami-event="CTA Click: Bottom of Architecture">Let's discuss details</a>
+            </div>
         </div>
 
         <!-- СТОРІНКА: ДЕТАЛІ -->
@@ -562,6 +602,12 @@
                 <div class="gallery-item"><img src="images/thumb/detail-work5.jpg" data-full="images/detail-work5.jpg" alt="Detail Work 5"></div>
                 <div class="gallery-item"><img src="images/thumb/detail-work6.jpg" data-full="images/detail-work6.jpg" alt="Detail Work 6"></div>
             </section>
+
+            <!-- ДОДАНО: Soft CTA для Деталей -->
+            <div class="gallery-cta">
+                <p>Need high-end 3D visualization?</p>
+                <a data-target="contact" data-umami-event="CTA Click: Bottom of Details">Contact me</a>
+            </div>
         </div>
 
         <!-- СТОРІНКА: КОНТАКТИ -->
@@ -592,7 +638,6 @@
     <!-- HTML для лайтбоксу -->
     <div id="lightbox" class="lightbox">
         <span class="lightbox-close">&times;</span>
-        <!-- ДОДАНО: Елементи керування слайдером -->
         <span class="lightbox-prev">&#10094;</span>
         <img class="lightbox-content" id="lightbox-img">
         <span class="lightbox-next">&#10095;</span>
@@ -604,7 +649,7 @@
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('.nav-links a[data-target]');
 
-            // ДОДАНО: Професійна логіка маршрутизації (URL Routing)
+            // Професійна логіка маршрутизації (URL Routing)
             const showPage = (targetId) => {
                 const targetPage = document.getElementById(targetId);
                 if (!targetPage) return;
@@ -621,6 +666,11 @@
                 activeLinks.forEach(link => link.classList.add('active'));
 
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // ДОДАНО: Відстеження Umami (перегляд розділів)
+                if (window.umami) {
+                    umami.track(`Viewed Section: ${targetId}`);
+                }
             };
 
             const handleRouting = () => {
@@ -654,21 +704,45 @@
             // Перевіряємо URL при першому завантаженні сайту
             handleRouting();
 
-            // Логіка лайтбоксу залишається без змін
+            // Логіка лайтбоксу
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const closeBtn = document.querySelector('.lightbox-close');
             const galleryImages = document.querySelectorAll('.gallery-grid img[data-full]');
 
-            // ДОДАНО: Стан слайдера
+            // Стан слайдера
             let currentGallery = [];
             let currentIndex = 0;
+
+            // ДОДАНО: Змінні для "невидимої" аналітики (Deep Interest)
+            let imagesViewedSession = 0;
+            let deepInterestFired = false;
+            const DEEP_INTEREST_THRESHOLD = 7;
+
+            // ДОДАНО: Функція для відправки подій в Umami при перегляді фото
+            const trackImageView = () => {
+                if (!window.umami || currentGallery.length === 0) return;
+                
+                // Дістаємо назву файлу з URL (наприклад: 'int-work4.jpg')
+                const fullResUrl = currentGallery[currentIndex].getAttribute('data-full');
+                const filename = fullResUrl.split('/').pop();
+                
+                // 1. Відправляємо подію про перегляд конкретного фото
+                umami.track('Lightbox: Viewed Image', { filename: filename });
+
+                // 2. Логіка "Гарячого ліда" (Deep Interest)
+                imagesViewedSession++;
+                if (imagesViewedSession >= DEEP_INTEREST_THRESHOLD && !deepInterestFired) {
+                    umami.track('Deep Interest', { trigger: `Viewed ${DEEP_INTEREST_THRESHOLD}+ images` });
+                    deepInterestFired = true; // Захист від спаму: відправляємо лише один раз за сесію
+                }
+            };
 
             galleryImages.forEach(img => {
                 img.addEventListener('click', () => {
                     lightbox.classList.add('show');
                     
-                    // ВИПРАВЛЕНО: Збираємо всі картинки ТІЛЬКИ з поточного відкритого розділу
+                    // Збираємо всі картинки ТІЛЬКИ з поточного відкритого розділу
                     const activeSection = img.closest('.page');
                     currentGallery = Array.from(activeSection.querySelectorAll('.gallery-grid img[data-full]'));
                     currentIndex = currentGallery.indexOf(img);
@@ -677,14 +751,17 @@
                 });
             });
 
-            // ДОДАНО: Функція оновлення картинки
+            // Функція оновлення картинки
             const updateLightboxImage = () => {
                 if (currentGallery.length === 0) return;
                 const fullResUrl = currentGallery[currentIndex].getAttribute('data-full');
                 lightboxImg.src = fullResUrl;
+                
+                // ДОДАНО: Викликаємо трекінг при кожному оновленні картинки
+                trackImageView();
             };
 
-            // ДОДАНО: Логіка перемикання вперед/назад із зацикленням
+            // Логіка перемикання вперед/назад із зацикленням
             const nextImage = (e) => {
                 if (e) e.stopPropagation();
                 currentIndex = (currentIndex + 1) % currentGallery.length;
@@ -704,7 +781,7 @@
 
             closeBtn.addEventListener('click', closeLightbox);
             
-            // ДОДАНО: Обробники кліків по стрілках
+            // Обробники кліків по стрілках
             document.querySelector('.lightbox-next').addEventListener('click', nextImage);
             document.querySelector('.lightbox-prev').addEventListener('click', prevImage);
 
@@ -718,12 +795,12 @@
                 if (!lightbox.classList.contains('show')) return;
                 
                 if (e.key === 'Escape') closeLightbox();
-                // ДОДАНО: Керування клавіатурою
+                // Керування клавіатурою
                 if (e.key === 'ArrowRight') nextImage();
                 if (e.key === 'ArrowLeft') prevImage();
             });
 
-            // ДОДАНО: Обробка свайпів для смартфонів та планшетів
+            // Обробка свайпів для смартфонів та планшетів
             let touchStartX = 0;
             let touchEndX = 0;
 
