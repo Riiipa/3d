@@ -818,6 +818,15 @@
                 if (touchEndX < touchStartX - swipeThreshold) nextImage();
                 if (touchEndX > touchStartX + swipeThreshold) prevImage();
             };
+                        // ДОДАНО: Відстеження копіювання email-адреси (Невидима аналітика)
+            const emailLink = document.querySelector('a[href^="mailto:"]');
+            if (emailLink) {
+                emailLink.addEventListener('copy', () => {
+                    if (window.umami) {
+                        umami.track('Contact: Copied Email');
+                    }
+                });
+            }
         });
     </script>
 </body>
