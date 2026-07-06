@@ -66,8 +66,17 @@
             cursor: pointer;
         }
 
-        .nav-links a:hover, .nav-links a.active {
-            color: #ffffff;
+        /* СТИЛІ ЛОГОТИПУ */
+        .logo {
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo:hover {
+            opacity: 0.8;
         }
 
         .logo h1 {
@@ -77,10 +86,11 @@
             letter-spacing: 5px;
             text-align: center;
             cursor: pointer;
+            color: #ffffff;
         }
 
         .logo-img {
-            max-height: 50px;
+            max-height: 50px; /* Регулюйте висоту логотипу тут */
             width: auto;
             cursor: pointer;
             display: block;
@@ -489,6 +499,15 @@
 </head>
 <body>
     <header>
+        <!-- ЗМІНА: Додано логотип (зображення або текст) над меню -->
+        <a class="logo" data-target="home">
+            <!-- Варіант 1: Якщо у вас є картинка логотипу (розкоментуйте і вкажіть шлях) -->
+            <img src="images/logo.png" alt="Dmytro Ripa Logo" class="logo-img">
+            
+            <!-- Варіант 2: Якщо хочете текстовий логотип (видаліть img вище і розкоментуйте h1) -->
+            <!-- <h1>DR</h1> -->
+        </a>
+        
         <nav class="nav-links">
             <a data-target="home" class="active">HOME</a>
             <a data-target="interiors">INTERIORS</a>
