@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dmytro Ripa | Visualization for Interior Design Studios </title>
     
-    <!-- Правильні шрифти: читабельний мінімалізм (300 і 400) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&display=swap" rel="stylesheet">
     
-    <!-- Правильне підключення аналітики (ПОЗА тегом style) -->
     <script src="https://cloud.umami.is/script.js" data-website-id="2f22f287-88f8-4059-9999-76cdc04b44d3"></script>
 
     <style>
@@ -31,7 +29,7 @@
             background-color: #080808;
             color: #ffffff;
             font-family: 'Jost', sans-serif;
-            font-weight: 400; /* Базова товщина - Regular */
+            font-weight: 400; 
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -90,7 +88,7 @@
         }
 
         .logo-img {
-            max-height: 70px; /* Регулюйте висоту логотипу тут */
+            max-height: 70px; 
             width: auto;
             cursor: pointer;
             display: block;
@@ -163,7 +161,6 @@
             gap: 0.5rem;
         }
 
-        /* Стилі для твого імені як бренду */
         .intro-name {
             color: #ffffff;
             font-size: 1.8rem;
@@ -299,7 +296,7 @@
             transform: scale(1.03) translateZ(0);
         }
 
-        /* ДОДАНО: Стилі для Soft CTA в кінці галереї */
+        /* Стилі для Soft CTA в кінці галереї */
         .gallery-cta {
             text-align: center;
             margin-top: 5rem;
@@ -499,12 +496,8 @@
 </head>
 <body>
     <header>
-        <!-- ЗМІНА: Додано логотип (зображення або текст) над меню -->
         <a class="logo" data-target="home">
-            <!-- Варіант 1: Якщо у вас є картинка логотипу (розкоментуйте і вкажіть шлях) -->
             <img src="images/logo.png" alt="Dmytro Ripa Logo" class="logo-img">
-            
-            <!-- Варіант 2: Якщо хочете текстовий логотип (видаліть img вище і розкоментуйте h1) -->
             <!-- <h1>DR</h1> -->
         </a>
         
@@ -519,7 +512,8 @@
 
     <main>
         <!-- СТОРІНКА: ГОЛОВНА -->
-        <div id="home" class="page active">
+        <!-- Змінено id з "home" на "page-home", щоб уникнути конфліктів скролу -->
+        <div id="page-home" class="page active">
             <section class="intro">
                 <h1 class="intro-name">Dmytro Ripa</h1>
                 <p class="intro-role">Architectural Visualization for Interior Design Studios</p>
@@ -572,12 +566,8 @@
                 <div class="gallery-item"><img src="images/thumb/int-work3.jpg" data-full="images/int-work3.jpg" alt="Interior Work 18"></div>
                 <div class="gallery-item"><img src="images/thumb/int-work6.jpg" data-full="images/int-work6.jpg" alt="Interior Work 19"></div>
                 <div class="gallery-item"><img src="images/thumb/int-work7.jpg" data-full="images/int-work7.jpg" alt="Interior Work 20"></div>
-                
-                
-                
             </section>
             
-            <!-- ДОДАНО: Soft CTA для Інтер'єрів -->
             <div class="gallery-cta">
                 <p>Ready to collaborate?</p>
                 <a data-target="contact" data-umami-event="CTA Click: Bottom of Interiors">Get in touch</a>
@@ -608,7 +598,6 @@
                 <div class="gallery-item"><img src="images/thumb/ext-work18.jpg" data-full="images/ext-work18.jpg" alt="Exterior Work 18"></div>
             </section>
 
-            <!-- ДОДАНО: Soft CTA для Архітектури -->
             <div class="gallery-cta">
                 <p>Have an architecture project in mind?</p>
                 <a data-target="contact" data-umami-event="CTA Click: Bottom of Architecture">Let's discuss details</a>
@@ -627,7 +616,6 @@
                 <div class="gallery-item"><img src="images/thumb/detail-work6.jpg" data-full="images/detail-work6.jpg" alt="Detail Work 6"></div>
             </section>
 
-            <!-- ДОДАНО: Soft CTA для Деталей -->
             <div class="gallery-cta">
                 <p>Need high-end 3D visualization?</p>
                 <a data-target="contact" data-umami-event="CTA Click: Bottom of Details">Contact me</a>
@@ -635,7 +623,7 @@
         </div>
 
         <!-- СТОРІНКА: КОНТАКТИ -->
-        <div id="contact" class="page">
+        <div id="page-contact" class="page">
             <h2 class="page-title">Contact</h2>
             <section class="contact-info">
                 <p class="contact-text">Open for opportunities and collaborations.</p>
@@ -674,7 +662,8 @@
             const navLinks = document.querySelectorAll('.nav-links a[data-target]');
 
             // Професійна логіка маршрутизації (URL Routing)
-            const showPage = (targetId) => {
+            const showPage = (targetId, isInitialLoad = false) => {
+                // Додаємо префікс "page-", щоб браузер не скролив автоматично до блоку
                 const targetPage = document.getElementById('page-' + targetId);
                 if (!targetPage) return;
 
@@ -689,44 +678,45 @@
                 const activeLinks = document.querySelectorAll(`[data-target="${targetId}"]`);
                 activeLinks.forEach(link => link.classList.add('active'));
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Якщо це просто перехід по меню - плавний скрол, якщо при першому завантаженні (за посиланням) - миттєво показує початок.
+                window.scrollTo({ 
+                    top: 0, 
+                    behavior: isInitialLoad ? 'auto' : 'smooth' 
+                });
 
-                // ДОДАНО: Відстеження Umami (перегляд розділів)
                 if (window.umami) {
                     umami.track(`Viewed Section: ${targetId}`);
                 }
             };
 
-            const handleRouting = () => {
-                // Читаємо хеш з URL (без символу #)
+            const handleRouting = (isInitialLoad = false) => {
                 const hash = window.location.hash.substring(1);
                 
-                if (hash && document.getElementById(hash)) {
-                    showPage(hash);
+                // Перевіряємо чи є такий блок з нашим префіксом
+                if (hash && document.getElementById('page-' + hash)) {
+                    showPage(hash, isInitialLoad);
                 } else {
-                    // Якщо хешу немає або він хибний - кидаємо на головну
-                    showPage('home');
+                    showPage('home', isInitialLoad);
                     if(hash) history.replaceState(null, null, window.location.pathname);
                 }
             };
 
             links.forEach(link => {
                 link.addEventListener('click', (e) => {
-                    e.preventDefault(); // Блокуємо дефолтний клік
+                    e.preventDefault();
                     const targetId = link.getAttribute('data-target');
                     if (targetId) {
-                        // Змінюємо URL без перезавантаження і без стрибків
                         history.pushState(null, null, `#${targetId}`);
-                        handleRouting();
+                        handleRouting(false); // Клік по меню, плавний скрол
                     }
                 });
             });
 
             // Обробка кнопок "Назад/Вперед" у браузері
-            window.addEventListener('popstate', handleRouting);
+            window.addEventListener('popstate', () => handleRouting(false));
 
-            // Перевіряємо URL при першому завантаженні сайту
-            handleRouting();
+            // Перевіряємо URL при першому завантаженні сайту (isInitialLoad = true)
+            handleRouting(true);
 
             // Логіка лайтбоксу
             const lightbox = document.getElementById('lightbox');
@@ -738,27 +728,24 @@
             let currentGallery = [];
             let currentIndex = 0;
 
-            // ДОДАНО: Змінні для "невидимої" аналітики (Deep Interest)
+            // Змінні для "невидимої" аналітики (Deep Interest)
             let imagesViewedSession = 0;
             let deepInterestFired = false;
             const DEEP_INTEREST_THRESHOLD = 7;
 
-            // ДОДАНО: Функція для відправки подій в Umami при перегляді фото
+            // Функція для відправки подій в Umami при перегляді фото
             const trackImageView = () => {
                 if (!window.umami || currentGallery.length === 0) return;
                 
-                // Дістаємо назву файлу з URL (наприклад: 'int-work4.jpg')
                 const fullResUrl = currentGallery[currentIndex].getAttribute('data-full');
                 const filename = fullResUrl.split('/').pop();
                 
-                // 1. Відправляємо подію про перегляд конкретного фото
                 umami.track('Lightbox: Viewed Image', { filename: filename });
 
-                // 2. Логіка "Гарячого ліда" (Deep Interest)
                 imagesViewedSession++;
                 if (imagesViewedSession >= DEEP_INTEREST_THRESHOLD && !deepInterestFired) {
                     umami.track('Deep Interest', { trigger: `Viewed ${DEEP_INTEREST_THRESHOLD}+ images` });
-                    deepInterestFired = true; // Захист від спаму: відправляємо лише один раз за сесію
+                    deepInterestFired = true; 
                 }
             };
 
@@ -766,7 +753,6 @@
                 img.addEventListener('click', () => {
                     lightbox.classList.add('show');
                     
-                    // Збираємо всі картинки ТІЛЬКИ з поточного відкритого розділу
                     const activeSection = img.closest('.page');
                     currentGallery = Array.from(activeSection.querySelectorAll('.gallery-grid img[data-full]'));
                     currentIndex = currentGallery.indexOf(img);
@@ -775,17 +761,14 @@
                 });
             });
 
-            // Функція оновлення картинки
             const updateLightboxImage = () => {
                 if (currentGallery.length === 0) return;
                 const fullResUrl = currentGallery[currentIndex].getAttribute('data-full');
                 lightboxImg.src = fullResUrl;
                 
-                // ДОДАНО: Викликаємо трекінг при кожному оновленні картинки
                 trackImageView();
             };
 
-            // Логіка перемикання вперед/назад із зацикленням
             const nextImage = (e) => {
                 if (e) e.stopPropagation();
                 currentIndex = (currentIndex + 1) % currentGallery.length;
@@ -805,7 +788,6 @@
 
             closeBtn.addEventListener('click', closeLightbox);
             
-            // Обробники кліків по стрілках
             document.querySelector('.lightbox-next').addEventListener('click', nextImage);
             document.querySelector('.lightbox-prev').addEventListener('click', prevImage);
 
@@ -819,7 +801,6 @@
                 if (!lightbox.classList.contains('show')) return;
                 
                 if (e.key === 'Escape') closeLightbox();
-                // Керування клавіатурою
                 if (e.key === 'ArrowRight') nextImage();
                 if (e.key === 'ArrowLeft') prevImage();
             });
@@ -838,11 +819,12 @@
             }, { passive: true });
 
             const handleSwipe = () => {
-                const swipeThreshold = 50; // Мінімальна довжина свайпу в пікселях
+                const swipeThreshold = 50; 
                 if (touchEndX < touchStartX - swipeThreshold) nextImage();
                 if (touchEndX > touchStartX + swipeThreshold) prevImage();
             };
-                        // ДОДАНО: Відстеження копіювання email-адреси (Невидима аналітика)
+            
+            // Відстеження копіювання email-адреси
             const emailLink = document.querySelector('a[href^="mailto:"]');
             if (emailLink) {
                 emailLink.addEventListener('copy', () => {
