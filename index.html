@@ -549,7 +549,7 @@
         </div>
 
         <!-- СТОРІНКА: ІНТЕР'ЄРИ -->
-        <div id="interiors" class="page">
+        <div id="page-interiors" class="page">
             <h2 class="page-title">Interiors</h2>
             <section class="gallery-grid">
                 <div class="gallery-item"><img src="images/thumb/int-work14.jpg" data-full="images/int-work14.jpg" alt="Interior Work 1"></div>
@@ -585,7 +585,7 @@
         </div>
 
         <!-- СТОРІНКА: АРХІТЕКТУРА -->
-        <div id="architecture" class="page">
+        <div id="page-architecture" class="page">
             <h2 class="page-title">Architecture</h2>
             <section class="gallery-grid">
                 <div class="gallery-item"><img src="images/thumb/ext-work1.jpg" data-full="images/ext-work1.jpg" alt="Exterior Work 1"></div>
@@ -616,7 +616,7 @@
         </div>
 
         <!-- СТОРІНКА: ДЕТАЛІ -->
-        <div id="details" class="page">
+        <div id="page-details" class="page">
             <h2 class="page-title">Details</h2>
             <section class="gallery-grid">
                 <div class="gallery-item"><img src="images/thumb/detail-work1.jpg" data-full="images/detail-work1.jpg" alt="Detail Work 1"></div>
@@ -675,7 +675,7 @@
 
             // Професійна логіка маршрутизації (URL Routing)
             const showPage = (targetId) => {
-                const targetPage = document.getElementById(targetId);
+                const targetPage = document.getElementById('page-' + targetId);
                 if (!targetPage) return;
 
                 // Ховаємо всі сторінки і знімаємо активні класи з меню
